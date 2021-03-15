@@ -1,6 +1,6 @@
 package lt.academy.classes;
 
-public class Student implements Comparable<Student>{
+public class Student {
     private String name;
     private String surname;
     private int number;
@@ -41,8 +41,4 @@ public class Student implements Comparable<Student>{
                 name +" " + surname + " " + number;
     }
 
-    @Override
-    public int compareTo(Student student) {
-        return this.getNumber() - student.getNumber();
-    }
 }

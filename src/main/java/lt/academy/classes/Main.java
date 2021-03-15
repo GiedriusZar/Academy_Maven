@@ -1,10 +1,11 @@
 package lt.academy.classes;
 
 import lt.academy.classes.Sorting.NameSorting;
+import lt.academy.classes.Sorting.NumberSorting;
 import lt.academy.classes.Sorting.SurnameSorting;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -13,9 +14,10 @@ public class Main {
         JavaStudentGroup studentGroup = new JavaStudentGroup();
 
         List<Student> simpleList = new ArrayList<>();
-        List<Student> numberList = new ArrayList<>();
-        List<Student> nameList = new ArrayList<>();
-        List<Student> surnameList = new ArrayList<>();
+        simpleList = studentGroup.studentList;
+        List<Student> numberList = numberList(simpleList, new NumberSorting());
+        List<Student> nameList = nameList(simpleList, new NameSorting());
+        List<Student> surnameList = surnameList(simpleList, new SurnameSorting());
 
         studentGroup.addStudent(new Student("Giedrius", "Giedraitis", 5));
         studentGroup.addStudent(new Student("Tomas", "Tomaitis", 7));
@@ -28,45 +30,33 @@ public class Main {
         studentGroup.addStudent(new Student("Petras", "Rokaitis", 7));
         studentGroup.addStudent(new Student("Lukas", "Giedraitis", 10));
         studentGroup.addStudent(new Student("Jonas", "Lukaitis", 15));
-
-        getStudents(studentGroup.studentList);
-//        System.out.println("--------------------------------");
-//        Collections.sort(studentGroup.studentList);
-//        getStudents(studentGroup.studentList);
-//        System.out.println("--------------------------------");
-//        studentGroup.studentList.sort(new NameSorting());
-//        getStudents(studentGroup.studentList);
-//        System.out.println("--------------------------------");
-//        studentGroup.studentList.sort(new SurnameSorting());
-//        getStudents(studentGroup.studentList);
-
-
     }
 
-    private static void getStudents (List <Student> students){
-        for (Student student : students){
+    private static void getStudents(List<Student> students) {
+        for (Student student : students) {
             System.out.println(student);
         }
     }
 
-    public void addToSimpleList (List <Student> originalList, List <Student> newList){
 
+    public static List<Student> numberList(List<Student> originalList, Comparator<Student> comparator) {
+        originalList.sort(comparator);
 
-    }
-    public void addToNumberList (List <Student> originalList, List <Student> newList){
-
-
-    }
-    public void addToNameList (List <Student> originalList, List <Student> newList){
-
-
-    }
-    public void addToSurnameList (List <Student> originalList, List <Student> newList){
-
-
+        return new ArrayList<>(originalList);
     }
 
+    public static List<Student> nameList(List<Student> originalList, Comparator<Student> comparator) {
+        originalList.sort(comparator);
 
+        return new ArrayList<>(originalList);
     }
+
+    public static List<Student> surnameList(List<Student> originalList, Comparator<Student> comparator) {
+        originalList.sort(comparator);
+
+        return new ArrayList<>(originalList);
+    }
+
+}
 
 
